@@ -1,6 +1,8 @@
 /*
 *   CSS Stylesheet
 */
+
+
 html, body {
     margin: auto;
     overflow-x: hidden;
@@ -25,23 +27,42 @@ a {
     color: black;
 }
 
+ul, li {
+    text-decoration: none;
+    list-style: none;
+}
+
+.center-flex {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 .link-nav {
     display: flex;
     justify-content: center;
     align-items: baseline;
 }
 
+/* Game Area Styles */
+
 #game-background {
     display: flex;
     justify-content: center;
     align-items: center;
     width: 100%;
-    min-height: 500px;
+    min-height: 700px;
     background-color: aquamarine;
 
 }
 
 #game-area {
+    width: 95%;
     position: absolute;
     background-color: aliceblue;
+}
+
+.zener-card {
+    background-color: whitesmoke;
+    border: 1px solid darkgray;
 }
