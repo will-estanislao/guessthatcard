@@ -1,0 +1,25 @@
+/*
+*   CSS Stylesheet
+*/
+html, body {
+    width: 100%;
+    text-align: center;
+    background-color: lightblue;
+}
+
+header {
+    background-color: blue;
+}
+
+a {
+    text-decoration: none;
+    color: black;
+}
+
+.link-nav {
+    background-color: antiquewhite;
+}
+
+#game-area {
+    background-color: aquamarine;
+}
