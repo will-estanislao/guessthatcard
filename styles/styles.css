@@ -2,13 +2,22 @@
 *   CSS Stylesheet
 */
 html, body {
+    margin: auto;
+    overflow-x: hidden;
     width: 100%;
     text-align: center;
     background-color: lightblue;
+    font-family: 'Trebuchet MS', sans-serif;
+    
 }
 
 header {
-    background-color: blue;
+    padding-top: 1%;
+}
+
+header > h1 {
+    border: 1px dashed blue;
+    padding-bottom:0%;
 }
 
 a {
@@ -17,9 +26,22 @@ a {
 }
 
 .link-nav {
-    background-color: antiquewhite;
+    display: flex;
+    justify-content: center;
+    align-items: baseline;
+}
+
+#game-background {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    min-height: 500px;
+    background-color: aquamarine;
+
 }
 
 #game-area {
-    background-color: aquamarine;
+    position: absolute;
+    background-color: aliceblue;
 }
