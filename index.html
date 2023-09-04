@@ -21,28 +21,30 @@
     </header>
     <div id="game-background">
         <div id="game-area">
-            <p id="player-score">Score:</p>
-            <h3>The card was a:</h3>
+            <div id="game-info">
+                <p id="player-score">Score: 0 </p>
+            </div>
+            <h3 id="card-reveal">Correct! The card was a circle!</h3>
             <div id="guess-card-area">
                 <div class="zener-card" id="hidden-card">
                     <img class="zener-symbol" id="hidden-symbol" src="images/card-symbols/circle.jpg">
                 </div>
             </div>
             <div id="user-card-choices">
-                <p>Player choices</p>
+                <p>Pick a card!</p>
                 <ul class="center-flex">
-                    <li><div class="zener-card"><img class="zener-symbol" src="images/card-symbols/cross.jpg"></div></li>
-                    <li><div class="zener-card"><img class="zener-symbol" src="images/card-symbols/circle.jpg"></div></li>
-                    <li><div class="zener-card"><img class="zener-symbol" src="images/card-symbols/wave.jpg"></div></li>
-                    <li><div class="zener-card"><img class="zener-symbol" src="images/card-symbols/square.jpg"></div></li>
-                    <li><div class="zener-card"><img class="zener-symbol" src="images/card-symbols/star.jpg"></div></li>
+                    <li><div class="zener-card" id="cross"><img class="zener-symbol" src="images/card-symbols/cross.jpg"></div></li>
+                    <li><div class="zener-card" id="circle"><img class="zener-symbol" src="images/card-symbols/circle.jpg"></div></li>
+                    <li><div class="zener-card" id="wave"><img class="zener-symbol" src="images/card-symbols/wave.jpg"></div></li>
+                    <li><div class="zener-card" id="square"><img class="zener-symbol" src="images/card-symbols/square.jpg"></div></li>
+                    <li><div class="zener-card" id="star"><img class="zener-symbol" src="images/card-symbols/star.jpg"></div></li>
                 </ul>
             </div>
         </div>
     </div>
-<footer>
-    <div class="footer-credit">Will Estanislao &copy; 2023</div>
-    <script src="./scripts/scripts.js"></script>
-</footer>
+    <footer>
+        <div class="footer-credit"><p>Will Estanislao &copy; 2023</p></div>
+        <script src="./scripts/scripts.js"></script>
+    </footer>
 </body>
 </html>
