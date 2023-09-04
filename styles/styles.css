@@ -14,8 +14,14 @@ html, body {
     
 }
 
-h1 {
-    border: 1px dashed blue;
+hr {
+    text-align: center;
+    border-top: dotted 1px  aliceblue;
+    filter: drop-shadow(1px 1px 1px #688fab);
+    width: 25%;
+    padding: 0;
+    margin-top: 0;
+    margin-bottom: 5px;
 }
 
 a {
@@ -24,7 +30,7 @@ a {
 }
 
 a:hover {
-    color: purple;
+    color: #294559;
 }
 
 ul, li {
@@ -52,6 +58,17 @@ li {
     align-items: baseline;
 }
 
+h1 {
+    margin-top: 1%;
+    margin-bottom: 0;
+}
+
+.footer-credit>p,
+h1, .link-nav, a {
+    color: aliceblue;
+    filter: drop-shadow(1px 1px 1px #688fab);
+}
+
 /* Game Area Styles */
 
 #game-background {
@@ -66,7 +83,7 @@ li {
 }
 
 #game-area {
-    border: 5px solid gray;
+    border: 2px solid gray;
     filter:drop-shadow(5px 5px 1px #639dc7);
     margin-left: 2.5%;
     margin-right: 2.5%;
@@ -104,7 +121,7 @@ li {
 }
 
 li>.zener-card {
-    filter: drop-shadow(5px -5px 1px #688fab);
+    filter: drop-shadow(-2px 2px 1px #688fab);
     transition: box-shadow 1s;
 }
 
@@ -133,6 +150,5 @@ footer {
 }
 
 .footer-credit {
-    background-color: brown;
     text-align: center;
 }
