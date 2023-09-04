@@ -16,7 +16,7 @@ html, body {
 
 hr {
     text-align: center;
-    border-top: dotted 1px  aliceblue;
+    border-top: dotted 2px  aliceblue;
     filter: drop-shadow(1px 1px 1px #688fab);
     width: 25%;
     padding: 0;
