@@ -27,9 +27,17 @@ a {
     color: black;
 }
 
+a:hover {
+    color: purple;
+}
+
 ul, li {
     text-decoration: none;
     list-style: none;
+}
+
+li {
+    padding-right: 5%;
 }
 
 .center-flex {
@@ -42,6 +50,7 @@ ul, li {
     display: flex;
     justify-content: center;
     align-items: baseline;
+    padding-bottom: 2%;
 }
 
 /* Game Area Styles */
@@ -57,12 +66,37 @@ ul, li {
 }
 
 #game-area {
-    width: 95%;
+    width: 100%;
     position: absolute;
     background-color: aliceblue;
 }
 
+#guess-card-area {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 1% 1%;
+}
+
+/* Card Styles */
 .zener-card {
-    background-color: whitesmoke;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    width: 150px;
+    height: 250px;
+    padding: 5% 5%;
+    background-color: white;
     border: 1px solid darkgray;
+}
+
+.zener-symbol {
+    width: 125px;
+    height: 125px;
+}
+
+#hidden-card {
+    width: 175px;
+    height: 175px;
 }
