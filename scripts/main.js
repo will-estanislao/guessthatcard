@@ -18,6 +18,7 @@ let hiddenCard = document.getElementById("hidden-symbol");
 
 let isCardHidden = true;
 let playerScore = 0;
+let timeOut;
 
 /**
  * Assign Events
@@ -45,28 +46,29 @@ function checkCardChoice(e) {
     isCardHidden = false;
   }
 
-  // Do animation flip of card
   // Wait 15s - 30s before randomizing card
+  setTimeout(changeHiddenCard, 3000);
   logStats();
   console.log(e.src);
   console.log(hiddenCard.src);
-
-  changeHiddenCard();
 }
 
 function logStats() {
-  console.log("Current Player Score: " + playerScore);
-  console.log("Is Card Hidden? " + isCardHidden);
+  console.log(
+    "Current Player Score: " + playerScore + "\nIs Card Hidden? " + isCardHidden
+  );
 }
 
 function changeHiddenCard() {
   let randomNumber = Math.floor(Math.random() * 5);
   let cardSymbolKeys = Object.keys(Images);
+
+  // Do animation flip of card
   hiddenCard.src = Images[cardSymbolKeys[randomNumber]];
 
-  console.log("Random Number: " + randomNumber);
-  console.log("Card Symbol Key: " + cardSymbolKeys);
-  console.log(hiddenCard.src);
+  console.log(
+    "Random Number: " + randomNumber + "\nCard Symbol Key: " + cardSymbolKeys
+  );
 }
 
 function gameRestart() {
@@ -78,6 +80,9 @@ function gameRestart() {
   scoreText.innerHTML = "Score: " + playerScore;
 
   // Flip card over to backside
+
+  // Pick new cards
+  changeHiddenCard();
 }
 
 // Event
@@ -91,11 +96,5 @@ function gameRestart() {
 
 // General Flow:
 // Game Start
-// - Reset Score 0
-// - Pick random card to be hidden
-// - Hide card - set to true
-// - Re-assign event to cards?
-// - User picks choice, choice is checked against hidden card
-// - If right, add score & notify user, if wrong notify user do not add score
 // - Continue on after 15s-30s
 // - Do a best out of 3 and endless mode
