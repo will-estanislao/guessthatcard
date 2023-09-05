@@ -32,8 +32,17 @@ for (i = 0; i < cardOptions.length; i++) {
   });
 }
 
-// User picks a card
-// Card is checked against current
+/**
+ * Functions
+ */
+
+/**
+ * @name checkCardChoice
+ * @description Checks if the card the user picked is correct and informs
+ * them. If it is correct, the user's score will go up. Then it changes
+ * the card's symbol randomly.
+ * @param {Element} e
+ */
 function checkCardChoice(e) {
   if (hiddenCard.src == e.src) {
     ++playerScore;
@@ -50,17 +59,17 @@ function checkCardChoice(e) {
   console.log(hiddenCard.src);
 }
 
-function logStats() {
-  console.log(
-    "Current Player Score: " + playerScore + "\nIs Card Hidden? " + isCardHidden
-  );
-}
-
+/**
+ * @name changeHiddenCard
+ * @description Changes the card the user must guess randomly
+ */
 function changeHiddenCard() {
   let randomNumber = Math.floor(Math.random() * 5);
   let cardSymbolKeys = Object.keys(Images);
 
   // Do animation flip of card
+  gameText.innerHTML = "Guess that card!";
+
   hiddenCard.src = Images[cardSymbolKeys[randomNumber]];
 
   console.log(
@@ -68,6 +77,11 @@ function changeHiddenCard() {
   );
 }
 
+/**
+ * @name gameRestart
+ * @description For restarting the game fresh. Resets values and
+ * picks a new symbol for the hidden card
+ */
 function gameRestart() {
   // Reset Values
   playerScore = 0;
@@ -82,16 +96,16 @@ function gameRestart() {
   changeHiddenCard();
 }
 
-// Event
-// Check cards
-
-// Pick random card to guess
-// Flip card
-// Reset score to zero + add score
-
-// OnClick event applied to all user choice cards
+/**
+ * @name logStats
+ * @description For logging information about game onto console
+ */
+function logStats() {
+  console.log(
+    "Current Player Score: " + playerScore + "\nIs Card Hidden? " + isCardHidden
+  );
+}
 
 // General Flow:
 // Game Start
-// - Continue on after 15s-30s
 // - Do a best out of 3 and endless mode
