@@ -18,7 +18,6 @@ let hiddenCard = document.getElementById("hidden-symbol");
 
 let isCardHidden = true;
 let playerScore = 0;
-let timeOut;
 
 /**
  * Assign Events
@@ -38,12 +37,10 @@ for (i = 0; i < cardOptions.length; i++) {
 function checkCardChoice(e) {
   if (hiddenCard.src == e.src) {
     ++playerScore;
-    isCardHidden = false;
     gameText.innerHTML = "You guessed correctly!";
     scoreText.innerHTML = "Score: " + playerScore;
   } else {
     gameText.innerHTML = "You guessed incorrectly!";
-    isCardHidden = false;
   }
 
   // Wait 15s - 30s before randomizing card
