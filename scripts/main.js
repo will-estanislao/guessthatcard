@@ -12,7 +12,6 @@ const Images = {
 
 const userHand = document.getElementById("user-card-choices");
 const cardOptions = userHand.getElementsByClassName("zener-card");
-let cardToGuess = document.getElementById("hidden-card");
 let gameText = document.getElementById("card-reveal");
 let scoreText = document.getElementById("player-score");
 let hiddenCard = document.getElementById("hidden-symbol");
@@ -20,9 +19,16 @@ let hiddenCard = document.getElementById("hidden-symbol");
 let isCardHidden = true;
 let playerScore = 0;
 
+/**
+ * Assign Events
+ */
 for (i = 0; i < cardOptions.length; i++) {
   cardOptions[i].addEventListener("click", (e) => {
-    checkCardChoice(e.target);
+    if (e.target.tagName == "DIV") {
+      checkCardChoice(e.target.firstElementChild);
+    } else {
+      checkCardChoice(e.target);
+    }
   });
 }
 
@@ -32,7 +38,6 @@ function checkCardChoice(e) {
   if (hiddenCard.src == e.src) {
     ++playerScore;
     isCardHidden = false;
-
     gameText.innerHTML = "You guessed correctly!";
     scoreText.innerHTML = "Score: " + playerScore;
   } else {
@@ -62,6 +67,17 @@ function changeHiddenCard() {
   console.log("Random Number: " + randomNumber);
   console.log("Card Symbol Key: " + cardSymbolKeys);
   console.log(hiddenCard.src);
+}
+
+function gameRestart() {
+  // Reset Values
+  playerScore = 0;
+  isCardHidden = true;
+
+  // Change HTML
+  scoreText.innerHTML = "Score: " + playerScore;
+
+  // Flip card over to backside
 }
 
 // Event
