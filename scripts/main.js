@@ -28,17 +28,21 @@ let hiddenCard = document.getElementById("hidden-symbol");
 let isCardHidden = true;
 let playerScore = 0;
 
+window.onload = GameRestart();
+
+
 /**
  * Assign Events
  */
 for (i = 0; i < cardOptions.length; i++) {
   cardOptions[i].addEventListener("click", (e) => {
-    userChoiceAnimation(e.target);
+    let a = e.target;
+    userChoiceAnimation(a);
 
     if (e.target.tagName == "DIV") {
-      e = e.target.firstElementChild;
+      a = e.target.firstElementChild;
     }
-    checkCardChoice(e);
+    checkCardChoice(a);
   });
 }
 
@@ -54,7 +58,7 @@ for (i = 0; i < cardOptions.length; i++) {
  * @param {Element} e
  */
 function checkCardChoice(e) {
-  if (hiddenCard.src == e.src) {
+  if (GetHiddenCard() == e.src) {
     ++playerScore;
     gameText.innerHTML = "You guessed correctly!";
     scoreText.innerHTML = "Score: " + playerScore;
@@ -63,11 +67,12 @@ function checkCardChoice(e) {
   }
 
   cardToAnimate.classList.add("card-flip");
+
+  setTimeout(clearCardAnimations, 3000);
   setTimeout(changeHiddenCard, 4000);
 
   logStats();
-
-  console.log(hiddenCard.src);
+  console.log("Picked card by user: " + e.src + "\nCurrent Hidden Card: " + GetHiddenCard());
 }
 
 /**
@@ -78,13 +83,10 @@ function changeHiddenCard() {
   let randomNumber = Math.floor(Math.random() * 5);
   let cardSymbolKeys = Object.keys(Images);
   
-  clearCardAnimations();
-
-  setTimeout(function(){  hiddenCard.src = Images[cardSymbolKeys[randomNumber]];
-  }, 1000);
+  hiddenCard.src = Images[cardSymbolKeys[randomNumber]];
 
   console.log(
-    "Random Number: " + randomNumber + "\nCard Symbol Key: " + cardSymbolKeys
+    "New Hidden Card: " + hiddenCard.src
   );
 }
 
@@ -103,23 +105,28 @@ function clearCardAnimations() {
   gameText.innerHTML = "Guess that card!";
 }
 
+function GetHiddenCard() {
+  hiddenCard = document.getElementById("hidden-symbol");
+  let currentHiddenCard = hiddenCard.src;
+
+  return currentHiddenCard;
+}
+
 /**
- * @name gameRestart
+ * @name GameRestart
  * @description For restarting the game fresh. Resets values and
  * picks a new symbol for the hidden card
  */
-function gameRestart() {
+function GameRestart() {
+  // Pick new cards
+  changeHiddenCard();
+
   // Reset Values
   playerScore = 0;
   isCardHidden = true;
 
   // Change HTML
   scoreText.innerHTML = "Score: " + playerScore;
-
-  // Flip card over to backside
-
-  // Pick new cards
-  changeHiddenCard();
 }
 
 /**
@@ -128,7 +135,8 @@ function gameRestart() {
  */
 function logStats() {
   console.log(
-    "Current Player Score: " + playerScore + "\nIs Card Hidden? " + isCardHidden
+    "Current Player Score: " + playerScore + "\nIs Card Hidden? " + isCardHidden +
+    "\nHidden Card: " + hiddenCard.src
   );
 }
 
