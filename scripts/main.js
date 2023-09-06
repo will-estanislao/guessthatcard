@@ -2,6 +2,15 @@
  * JS script
  */
 
+/**
+ * Animation variables
+ */
+const cardToAnimate = document.getElementById("guess-card-area").firstElementChild.firstElementChild;
+
+
+/**
+ * Game Related Variables
+ */
 const Images = {
   Cross: "images/card-symbols/cross.jpg",
   Circle: "images/card-symbols/circle.jpg",
@@ -52,8 +61,9 @@ function checkCardChoice(e) {
     gameText.innerHTML = "You guessed incorrectly!";
   }
 
-  // Wait 15s - 30s before randomizing card
-  setTimeout(changeHiddenCard, 3000);
+  cardToAnimate.classList.add("card-flip");
+  setTimeout(changeHiddenCard, 4000);
+  
   logStats();
   console.log(e.src);
   console.log(hiddenCard.src);
@@ -68,9 +78,11 @@ function changeHiddenCard() {
   let cardSymbolKeys = Object.keys(Images);
 
   // Do animation flip of card
+  cardToAnimate.classList.remove("card-flip");
+  
   gameText.innerHTML = "Guess that card!";
-
-  hiddenCard.src = Images[cardSymbolKeys[randomNumber]];
+  setTimeout(function(){  hiddenCard.src = Images[cardSymbolKeys[randomNumber]];
+  }, 1000);
 
   console.log(
     "Random Number: " + randomNumber + "\nCard Symbol Key: " + cardSymbolKeys

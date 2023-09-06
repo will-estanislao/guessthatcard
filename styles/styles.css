@@ -137,9 +137,52 @@ li>.zener-card:hover {
 #hidden-symbol {
     width: 150px;
     height: 150px;
+    transform: scaleX(-1);
 }
 
 .not-shown {
+    background-color: red;
+}
+
+/*
+* Card Animations
+*/
+
+#guess-card-area>.zener-card {
+    padding-left: 1%;
+    padding-right: 1%;
+    perspective: 10000px;
+}
+
+.zener-card-inner {
+    width: 160px;
+    height: 250px;
+    position: relative;
+    text-align: center;
+    transition: transform 0.8s;
+    transform-style: preserve-3d;
+}
+
+.zener-front, .zener-back {
+    position: absolute;
+    width: 100%;
+    height:100%;
+    position:absolute;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+}
+
+.card-flip {
+    transform: rotateY(180deg);
+}
+
+.zener-front {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.zener-back {
     background-color: red;
 }
 
