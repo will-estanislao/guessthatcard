@@ -30,19 +30,18 @@ let playerScore = 0;
 
 window.onload = GameRestart();
 
-
 /**
  * Assign Events
  */
 for (i = 0; i < cardOptions.length; i++) {
   cardOptions[i].addEventListener("click", (e) => {
     let a = e.target;
-    userChoiceAnimation(a);
+    UserChoiceAnimation(a);
 
     if (e.target.tagName == "DIV") {
       a = e.target.firstElementChild;
     }
-    checkCardChoice(a);
+    CheckCardChoice(a);
   });
 }
 
@@ -51,13 +50,13 @@ for (i = 0; i < cardOptions.length; i++) {
  */
 
 /**
- * @name checkCardChoice
+ * @name CheckCardChoice
  * @description Checks if the card the user picked is correct and informs
  * them. If it is correct, the user's score will go up. Then it changes
  * the card's symbol randomly.
  * @param {Element} e
  */
-function checkCardChoice(e) {
+function CheckCardChoice(e) {
   if (GetHiddenCard() == e.src) {
     ++playerScore;
     gameText.innerHTML = "You guessed correctly!";
@@ -68,18 +67,18 @@ function checkCardChoice(e) {
 
   cardToAnimate.classList.add("card-flip");
 
-  setTimeout(clearCardAnimations, 3000);
-  setTimeout(changeHiddenCard, 4000);
+  setTimeout(ClearCardAnimations, 3000);
+  setTimeout(ChangeHiddenCard, 4000);
 
-  logStats();
+  LogStats();
   console.log("Picked card by user: " + e.src + "\nCurrent Hidden Card: " + GetHiddenCard());
 }
 
 /**
- * @name changeHiddenCard
+ * @name ChangeHiddenCard
  * @description Changes the card the user must guess randomly
  */
-function changeHiddenCard() {
+function ChangeHiddenCard() {
   let randomNumber = Math.floor(Math.random() * 5);
   let cardSymbolKeys = Object.keys(Images);
   
@@ -90,14 +89,26 @@ function changeHiddenCard() {
   );
 }
 
-function userChoiceAnimation(e) {
+/**
+ * @name UserChoiceAnimation
+ * @description Applies a glowing yellow border style on the 
+ * card the user picks
+ * @param {EventTarget} e 
+ */
+function UserChoiceAnimation(e) {
   if(e.tagName == "IMG") {
     e = e.parentElement;
   }
   e.classList.add("picked-card");
 }
 
-function clearCardAnimations() {
+/**
+ * @name ClearCardAnimations
+ * @description Clears all styles applied to the hidden card and
+ * user choices. Flips the revealed card over, clears border style
+ * and resets text
+ */
+function ClearCardAnimations() {
   cardToAnimate.classList.remove("card-flip");
   for (cards = 0; cards < cardOptions.length; cards++) {
     cardOptions[cards].classList.remove("picked-card");
@@ -105,6 +116,11 @@ function clearCardAnimations() {
   gameText.innerHTML = "Guess that card!";
 }
 
+/**
+ * @name GetHiddenCard
+ * @description Gets the element that contains the hidden card
+ * @returns The src path of the current card symbol
+ */
 function GetHiddenCard() {
   hiddenCard = document.getElementById("hidden-symbol");
   let currentHiddenCard = hiddenCard.src;
@@ -119,7 +135,7 @@ function GetHiddenCard() {
  */
 function GameRestart() {
   // Pick new cards
-  changeHiddenCard();
+  ChangeHiddenCard();
 
   // Reset Values
   playerScore = 0;
@@ -130,16 +146,12 @@ function GameRestart() {
 }
 
 /**
- * @name logStats
+ * @name LogStats
  * @description For logging information about game onto console
  */
-function logStats() {
+function LogStats() {
   console.log(
     "Current Player Score: " + playerScore + "\nIs Card Hidden? " + isCardHidden +
     "\nHidden Card: " + hiddenCard.src
   );
 }
-
-// General Flow:
-// Game Start
-// - Do a best out of 3 and endless mode
