@@ -34,15 +34,44 @@ window.onload = GameRestart();
  * Assign Events
  */
 for (i = 0; i < cardOptions.length; i++) {
-  cardOptions[i].addEventListener("click", (e) => {
-    let a = e.target;
-    UserChoiceAnimation(a);
+  cardOptions[i].addEventListener("click", HandleClick)
+}
 
-    if (e.target.tagName == "DIV") {
-      a = e.target.firstElementChild;
-    }
-    CheckCardChoice(a);
-  });
+/**
+ * @name HandleClick
+ * @description The click event that occurs when the
+ * user clicks one of the cards
+ * @param {Event} e 
+ */
+function HandleClick(e) {
+  let a = e.target;
+  UserChoiceAnimation(a);
+
+  if (e.target.tagName == "DIV") {
+    a = e.target.firstElementChild;
+  }
+  PlayerTurn(a);
+}
+
+/**
+ * @name DisableButtons
+ * @description Disable click events for user cards
+ */
+function DisableButtons() {
+  for (cards = 0; cards < cardOptions.length; cards++) {
+    cardOptions[cards].disabled = true;
+    cardOptions[cards].removeEventListener("click", HandleClick);
+  }
+}
+
+/**
+ * @name EnableButtons
+ * @description Rebind events to user cards
+ */
+function EnableButtons() {
+  for (i = 0; i < cardOptions.length; i++) {
+    cardOptions[i].addEventListener("click", HandleClick);
+  }
 }
 
 /**
@@ -50,10 +79,31 @@ for (i = 0; i < cardOptions.length; i++) {
  */
 
 /**
+ * @name PlayerTurn
+ * @description The entire process that occurs on the players turn when
+ * they have picked a card
+ * @param {EventTarget} e 
+ */
+function PlayerTurn(e) {
+  DisableButtons();
+
+  CheckCardChoice(e);
+
+  cardToAnimate.classList.add("card-flip");
+
+  setTimeout(ClearCardAnimations, 3000);
+  setTimeout(ChangeHiddenCard, 4000);
+  setTimeout(EnableButtons, 4100);
+
+  LogStats();
+  console.log("Picked card by user: " + e.src + "\nCurrent Hidden Card: " + GetHiddenCard());
+
+}
+
+/**
  * @name CheckCardChoice
  * @description Checks if the card the user picked is correct and informs
- * them. If it is correct, the user's score will go up. Then it changes
- * the card's symbol randomly.
+ * them. If it is correct, the user's score will go up.
  * @param {Element} e
  */
 function CheckCardChoice(e) {
@@ -64,14 +114,6 @@ function CheckCardChoice(e) {
   } else {
     gameText.innerHTML = "You guessed incorrectly!";
   }
-
-  cardToAnimate.classList.add("card-flip");
-
-  setTimeout(ClearCardAnimations, 3000);
-  setTimeout(ChangeHiddenCard, 4000);
-
-  LogStats();
-  console.log("Picked card by user: " + e.src + "\nCurrent Hidden Card: " + GetHiddenCard());
 }
 
 /**
