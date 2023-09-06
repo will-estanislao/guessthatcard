@@ -33,11 +33,12 @@ let playerScore = 0;
  */
 for (i = 0; i < cardOptions.length; i++) {
   cardOptions[i].addEventListener("click", (e) => {
+    userChoiceAnimation(e.target);
+
     if (e.target.tagName == "DIV") {
-      checkCardChoice(e.target.firstElementChild);
-    } else {
-      checkCardChoice(e.target);
+      e = e.target.firstElementChild;
     }
+    checkCardChoice(e);
   });
 }
 
@@ -63,9 +64,9 @@ function checkCardChoice(e) {
 
   cardToAnimate.classList.add("card-flip");
   setTimeout(changeHiddenCard, 4000);
-  
+
   logStats();
-  console.log(e.src);
+
   console.log(hiddenCard.src);
 }
 
@@ -76,17 +77,30 @@ function checkCardChoice(e) {
 function changeHiddenCard() {
   let randomNumber = Math.floor(Math.random() * 5);
   let cardSymbolKeys = Object.keys(Images);
-
-  // Do animation flip of card
-  cardToAnimate.classList.remove("card-flip");
   
-  gameText.innerHTML = "Guess that card!";
+  clearCardAnimations();
+
   setTimeout(function(){  hiddenCard.src = Images[cardSymbolKeys[randomNumber]];
   }, 1000);
 
   console.log(
     "Random Number: " + randomNumber + "\nCard Symbol Key: " + cardSymbolKeys
   );
+}
+
+function userChoiceAnimation(e) {
+  if(e.tagName == "IMG") {
+    e = e.parentElement;
+  }
+  e.classList.add("picked-card");
+}
+
+function clearCardAnimations() {
+  cardToAnimate.classList.remove("card-flip");
+  for (cards = 0; cards < cardOptions.length; cards++) {
+    cardOptions[cards].classList.remove("picked-card");
+  }
+  gameText.innerHTML = "Guess that card!";
 }
 
 /**

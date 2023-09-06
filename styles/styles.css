@@ -69,6 +69,16 @@ h1, .link-nav, a {
     filter: drop-shadow(1px 1px 1px #688fab);
 }
 
+/* footer */
+footer {
+    width: 100%;
+}
+
+.footer-credit {
+    text-align: center;
+}
+
+
 /* Game Area Styles */
 
 #game-background {
@@ -124,7 +134,7 @@ li>.zener-card {
     transition: box-shadow 1s;
 }
 
-li>.zener-card:hover {
+li>.zener-card:hover, .picked-card {
     box-shadow: 0 0 5px 5px #fcf803;
     filter: drop-shadow(-2px 2px 1px #ebcd0c);
 }
@@ -186,11 +196,3 @@ li>.zener-card:hover {
     background-color: red;
 }
 
-/* footer */
-footer {
-    width: 100%;
-}
-
-.footer-credit {
-    text-align: center;
-}
