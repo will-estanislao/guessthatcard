@@ -85,7 +85,7 @@ footer {
     display: flex;
     justify-content: center;
     width: 100%;
-    height: 77%;
+    min-height: 750px;
     padding-top: 1%;
     position: relative;
 }
@@ -96,8 +96,8 @@ footer {
     margin-left: 2.5%;
     margin-right: 2.5%;
     padding-bottom: 1%;
+    margin-bottom: 2%;
     width: 90%;
-    position: absolute;
     background-color: aliceblue;
 }
 
@@ -256,9 +256,11 @@ li>.zener-card:hover, .picked-card {
         padding-top:0;
     }
 
-    #game-background {
-        height: 90%;
+    #card-reveal, #player-score {
+        margin-top: 2%;
+        margin-bottom: 2%;
     }
+
 }
 
 @media only screen and (max-width: 992px) {
@@ -267,7 +269,4 @@ li>.zener-card:hover, .picked-card {
         padding-right: .5%;
     }
 
-    #game-background {
-        height: 80%;
-    }
 }
