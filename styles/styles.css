@@ -85,7 +85,7 @@ footer {
     display: flex;
     justify-content: center;
     width: 100%;
-    min-height: 750px;
+    min-height: 725px;
     padding-top: 1%;
     position: relative;
 }
