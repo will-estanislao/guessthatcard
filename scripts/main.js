@@ -95,8 +95,8 @@ function PlayerTurn(e) {
   setTimeout(ChangeHiddenCard, 4000);
   setTimeout(EnableButtons, 4100);
 
-  LogStats();
-  console.log("Picked card by user: " + e.src + "\nCurrent Hidden Card: " + GetHiddenCard());
+  // LogStats();
+  // console.log("Picked card by user: " + e.src + "\nCurrent Hidden Card: " + GetHiddenCard());
 
 }
 
@@ -126,9 +126,7 @@ function ChangeHiddenCard() {
   
   hiddenCard.src = Images[cardSymbolKeys[randomNumber]];
 
-  console.log(
-    "New Hidden Card: " + hiddenCard.src
-  );
+  //console.log("New Hidden Card: " + hiddenCard.src);
 }
 
 /**

@@ -85,7 +85,7 @@ footer {
     display: flex;
     justify-content: center;
     width: 100%;
-    min-height: 750px;
+    height: 77%;
     padding-top: 1%;
     position: relative;
 }
@@ -123,14 +123,24 @@ footer {
     text-align: center;
     background-color: white;
     border: 1px solid darkgray;
-    padding: 1% 2%;
+    padding: .5% 1% 1% 1%;
     min-width: 145px;
-    min-height: 250px;
+    min-height: 255px;
 }
 
 li>.zener-card {
+    flex-direction: column;
     filter: drop-shadow(-2px 2px 1px #688fab);
     transition: box-shadow 1s;
+}
+
+li>.zener-card>p {
+    margin-top: 15px;
+    margin-bottom: 0;
+}
+
+li>.zener-card>.zener-symbol {
+    padding-top: 5%;
 }
 
 li>.zener-card:hover, .picked-card {
@@ -215,4 +225,49 @@ li>.zener-card:hover, .picked-card {
 
 .text {
     text-align: left;
+}
+
+/* Responsive styles */
+@media only screen and (max-width:850px) {
+    .choices {
+        display: block;
+    }
+
+    li {
+        margin: auto;
+    }
+
+    li>.zener-card {
+        flex-direction: row;
+        justify-content: space-between;
+        min-height: 50px;
+        margin-bottom: 1%;
+        padding-left: 15%;
+        padding-right: 10%;
+    }
+
+    li>.zener-card>p {
+        margin:auto;
+    }
+
+    li>.zener-card>.zener-symbol {
+        height: 35px;
+        width:35px;
+        padding-top:0;
+    }
+
+    #game-background {
+        height: 90%;
+    }
+}
+
+@media only screen and (max-width: 992px) {
+    li {
+        padding-left: .5%;
+        padding-right: .5%;
+    }
+
+    #game-background {
+        height: 80%;
+    }
 }
