@@ -137,6 +137,7 @@ li>.zener-card {
 li>.zener-card>p {
     margin-top: 15px;
     margin-bottom: 0;
+    cursor: default;
 }
 
 li>.zener-card>.zener-symbol {

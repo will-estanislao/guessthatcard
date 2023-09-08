@@ -136,7 +136,7 @@ function ChangeHiddenCard() {
  * @param {EventTarget} e 
  */
 function UserChoiceAnimation(e) {
-  if(e.tagName == "IMG") {
+  if(e.tagName != "DIV") {
     e = e.parentElement;
   }
   e.classList.add("picked-card");
